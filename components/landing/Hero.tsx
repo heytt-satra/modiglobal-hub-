@@ -2,25 +2,33 @@
 
 import { Search, MapPin, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Globe } from "@/components/landing/Globe";
 
 export function Hero() {
     return (
-        <section className="relative pt-48 pb-24 lg:pt-64 lg:pb-32 overflow-hidden">
-            <div className="max-w-[980px] mx-auto px-6 relative z-10 text-center">
+        <section className="relative h-screen min-h-[800px] overflow-hidden flex items-center">
+            {/* 3D Globe Background */}
+            <Globe />
+
+            {/* Dark Overlay Gradient to make text readable */}
+            <div className="absolute inset-0 bg-gradient-to-t from-canvas-default via-black/40 to-transparent z-0" />
+            <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent to-canvas-default z-0" />
+
+            <div className="max-w-[980px] mx-auto px-6 relative z-10 w-full pt-20">
 
                 {/* Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/5 mb-8"
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-md"
                 >
                     <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
                     </span>
-                    <span className="text-[11px] font-medium text-ink-body uppercase tracking-wider">
-                        Verified Professionals Online
+                    <span className="text-[11px] font-medium text-ink-display uppercase tracking-wider">
+                        Live Global Network
                     </span>
                 </motion.div>
 
@@ -28,59 +36,46 @@ export function Hero() {
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-ink-display mb-8 text-balance"
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                    className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight text-white mb-8 text-balance drop-shadow-2xl"
                 >
-                    Expert guidance. <br />
-                    <span className="text-ink-subtle">On demand.</span>
+                    The Hub <br />
+                    <span className="text-gray-300">Awakens.</span>
                 </motion.h1>
 
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                    className="text-xl md:text-2xl text-ink-body mb-12 max-w-2xl mx-auto leading-relaxed font-normal tracking-tight text-balance"
+                    transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                    className="text-xl md:text-2xl text-gray-200 mb-12 max-w-2xl leading-relaxed font-normal tracking-tight"
                 >
-                    Connect with trusted doctors, lawyers, and consultants. Private, secure, and instant.
+                    A new dimension of professional guidance. <br />
+                    Explore the world's experts in real-time 3D.
                 </motion.p>
 
-                {/* Magic Search */}
+                {/* Magic Search Dark Mode */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                    className="max-w-2xl mx-auto relative group"
+                    transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                    className="max-w-2xl relative group"
                 >
-                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-100 to-purple-100 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-                    <div className="relative bg-white p-2 rounded-2xl shadow-2xl ring-1 ring-black/5 flex items-center gap-2 transition-transform active:scale-[0.99]">
-                        <div className="flex-1 flex items-center px-4 gap-3 border-r border-black/5">
-                            <Search className="w-5 h-5 text-ink-subtle" />
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                    <div className="relative bg-black/80 backdrop-blur-xl p-2 rounded-2xl shadow-2xl ring-1 ring-white/10 flex items-center gap-2 transition-transform active:scale-[0.99]">
+                        <div className="flex-1 flex items-center px-4 gap-3 border-r border-white/10">
+                            <Search className="w-5 h-5 text-gray-400" />
                             <input
                                 type="text"
-                                placeholder="Find a cardiologist, lawyer, etc."
-                                className="w-full h-12 bg-transparent border-none text-lg text-ink-display placeholder:text-ink-subtle focus:ring-0 focus:outline-none"
+                                placeholder="Search the globe..."
+                                className="w-full h-12 bg-transparent border-none text-lg text-white placeholder:text-gray-500 focus:ring-0 focus:outline-none"
                             />
                         </div>
-                        <div className="hidden sm:flex items-center px-4 gap-3 w-1/3">
-                            <MapPin className="w-5 h-5 text-ink-subtle" />
-                            <input
-                                type="text"
-                                placeholder="Anywhere"
-                                className="w-full h-12 bg-transparent border-none text-base text-ink-display placeholder:text-ink-subtle focus:ring-0 focus:outline-none"
-                            />
-                        </div>
-                        <button className="h-12 w-12 bg-ink-display text-white rounded-xl flex items-center justify-center hover:bg-black transition-colors shrink-0">
+                        <button className="h-12 w-12 bg-white text-black rounded-xl flex items-center justify-center hover:bg-gray-200 transition-colors shrink-0">
                             <ArrowRight className="w-5 h-5" />
                         </button>
                     </div>
                 </motion.div>
 
-            </div>
-
-            {/* Aurora Background */}
-            <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-                <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-50/30 via-transparent to-transparent animate-[spin_120s_linear_infinite]" />
-                <div className="absolute top-[-20%] right-[-20%] w-[80%] h-[80%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-purple-50/30 via-transparent to-transparent blur-3xl" />
             </div>
         </section>
     );
